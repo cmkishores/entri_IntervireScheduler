@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Users.apps.UsersConfig'
+    
+    #User apps
+    
+    'Users.apps.UsersConfig',
+    'Interview.apps.InterviewConfig'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +59,7 @@ ROOT_URLCONF = 'InterviewScheduler.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
