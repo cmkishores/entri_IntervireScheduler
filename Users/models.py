@@ -7,3 +7,5 @@ class CustomUser(AbstractUser):
         ('interviewer', 'Interviewer'),
         ('hr','HR Manager'),
     ]
+    user_type = models.CharField(max_length = 50,choices = CHOICES)
+    
