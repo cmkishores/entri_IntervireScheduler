@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     #User apps
     
     'Users.apps.UsersConfig',
-    'Interview.apps.InterviewConfig'
+    'Interview.apps.InterviewConfig',
+    'crispy_forms'
+
 ]
 
 MIDDLEWARE = [
