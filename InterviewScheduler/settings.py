@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     
     'Users.apps.UsersConfig',
     'Interview.apps.InterviewConfig',
-    'crispy_forms'
+    'crispy_forms',
+    'bootstrap_datepicker_plus',
 
 ]
 
@@ -126,3 +127,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+AUTH_USER_MODEL = 'Users.CustomUser'
+LOGIN_REDIRECT_URL = 'home'
