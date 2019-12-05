@@ -10,8 +10,9 @@ from .models import InterviewSchedule
 
 from django.conf import settings
 
-class InterviewScheduleView(CreateView):
+class InterviewScheduleView(LoginRequiredMixin, CreateView):
 	form_class = ScheduleAddForm
+	login_url = 'login'
 	success_url = reverse_lazy('home')
 	template_name = 'addschedule.html'
 	def form_valid(self, form):
