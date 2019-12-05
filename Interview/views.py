@@ -23,3 +23,7 @@ class InterviewScheduleView(LoginRequiredMixin, UserPassesTestMixin, CreateView)
 	
 	def test_func(self):
 		return (self.request.user.user_type == "candidate" or self.request.user.user_type == "interviewer" )
+
+
+class SchedulerView(LoginRequiredMixin,ListView):
+	pass
