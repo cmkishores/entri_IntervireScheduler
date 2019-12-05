@@ -8,13 +8,20 @@ Home
 
 {% block body%}
     <div> 
-    <div class="card m-5">
-        <h1 class="card-title m-3">Interview Scheduler</h1>
-        <div class="card-body"> 
-        <a href='{% url "submit" %}'>Submit your Schedule</a>
-         </div
-    </div>
+        <div class="card m-5">
+            <h1 class="card-title m-3">Interview Scheduler</h1>
+            <div class="card-body"> 
+                Are you an Interview/ Candidate?<a class="card-link" href='{% url "submit" %}'>Submit your Schedule</a>
+                        <br>
+                HR : <a class="card-link" href='{% url "submit" %}'>Schedule an Interview</a>
+            </div>
+
+        <div class="card-footer">
+        <a href="{% url 'signup' %}">Sign Up </a>
+        <a class="m-3"href="{% url 'login' %}"> Log in </a>  </div>
 
         </div>
+
+    </div>
 {% endblock body %}
 
