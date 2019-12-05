@@ -1,0 +1,16 @@
+body {
+	
+    font-family: 'Barlow';
+	background: linear-gradient(to top, #BF360C, #FFA726);
+	height: 100%;
+    background-attachment:fixed;
+
+}
+
+
+
+.card-img-top
+{
+
+    width:100%;
+}
