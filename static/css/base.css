@@ -6,10 +6,6 @@ body {
 
 }
 
-
-
-.card-img-top
-{
-
-    width:100%;
+.card {
+    border-radius: 50px;
 }
