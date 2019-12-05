@@ -22,4 +22,4 @@ class InterviewScheduleView(LoginRequiredMixin, UserPassesTestMixin, CreateView)
 		return super().form_valid(form)
 	
 	def test_func(self):
-		return (self.request.user.user_type == "candidate" or self.request.user.usertype == "interviewer" )
+		return (self.request.user.user_type == "candidate" or self.request.user.user_type == "interviewer" )
