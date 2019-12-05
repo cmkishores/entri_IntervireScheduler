@@ -10,6 +10,8 @@ class InterviewSchedule(models.Model):
     
 
     interview_date = models.DateTimeField()
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+
 

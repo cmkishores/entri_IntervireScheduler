@@ -12,8 +12,11 @@ from django.conf import settings
 
 class InterviewScheduleView(CreateView):
 	form_class = ScheduleAddForm
-	success_url = reverse_lazy('login')
+	success_url = reverse_lazy('home')
 	template_name = 'addschedule.html'
+	def form_valid(self, form):
+		form.instance.owner = self.request.user
+		return super().form_valid(form)
 
 
 
