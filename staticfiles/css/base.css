@@ -1,0 +1,11 @@
+body {
+	
+    font-family: 'Barlow';
+	height: 100%;
+    background-attachment:fixed;
+
+}
+
+.card {
+    border-radius: 50px;
+}
