@@ -13,12 +13,16 @@ Home
             <div class="card-body"> 
                 Are you an Interviewer/ Candidate?<a class="card-link" href='{% url "submit" %}'>Submit your Schedule</a>
                         <br>
-                HR : <a class="card-link" href='{% url "submit" %}'>Schedule an Interview</a>
+                HR : <a class="card-link" href='{% url "schedule" %}'>Schedule an Interview</a>
             </div>
 
         <div class="card-footer">
-        <a href="{% url 'signup' %}">Sign Up </a>
-        <a class="m-3"href="{% url 'login' %}"> Log in </a>  </div>
+        
+        <a class="m-3" href="{% url 'signup' %}">Sign Up </a>
+        <a class="m-3" href="{% url 'login' %}"> Log in </a> 
+        <a class="m-3" href="{% url 'logout' %}"> Log out</a>
+        
+         </div>
 
         </div>
 

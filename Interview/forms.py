@@ -17,3 +17,7 @@ class ScheduleAddForm(forms.ModelForm):
              'start_time':TimeInput(),
              'end_time':TimeInput(),
          }
+
+class SearchScheduleForm(forms.Form):
+    interviewer_id = forms.CharField(label= "Enter interviewer id", max_length=100)
+    candidate_id = forms.CharField(label= "Enter candidate id", max_length=100)
