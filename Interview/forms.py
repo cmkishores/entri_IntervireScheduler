@@ -19,5 +19,5 @@ class ScheduleAddForm(forms.ModelForm):
          }
 
 class SearchScheduleForm(forms.Form):
-    interviewer_id = forms.CharField(label= "Enter interviewer id", max_length=100)
-    candidate_id = forms.CharField(label= "Enter candidate id", max_length=100)
+    interviewer_id = forms.CharField(label= "Enter interviewer username", max_length=100)
+    candidate_id = forms.CharField(label= "Enter candidate username", max_length=100)
