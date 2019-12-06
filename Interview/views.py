@@ -30,12 +30,29 @@ class SchedulerView(LoginRequiredMixin, UserPassesTestMixin, FormView):
 	login_url = 'login'
 	template_name = 'search.html'
 	redirect_field_name = 'redirect_to'
+	success_url = reverse_lazy('home')
+
 
 	def form_valid(self,form):
-		interviewer = InterviewSchedule.objects.get((owner.username)=form.interviewer_id)
-		candidate = InterviewSchedule.objects.get((owner.username)=form.candidate_id)
-		print(interviewer.start_time)
-		print(candidate.endtime)
+		interviewer = form.cleaned_data.get('interviewer_id')
+		candidate = form.cleaned_data.get('candidate_id')
+
+		for objects in InterviewSchedule.objects.all():
+				
+			if objects.owner.username == interviewer:
+					interviewer_start_time = objects.start_time
+					interviewer_end_time = objects.end_time
+					print(interviewer_start_time)
+					print(interviewer_end_time)
+			elif objects.owner.username == candidate:
+					candidate_start_time = objects.start_time
+					candidate_end_time = objects.end_time
+					print(candidate_start_time)
+					print(candidate_end_time)	
+			else : 
+					print()
+					print("not found")
+					print()
 		return super().form_valid(form)
 	
 	def test_func(self):
