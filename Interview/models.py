@@ -15,3 +15,10 @@ class InterviewSchedule(models.Model):
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
 
+class ScheduledInterview(models.Model):
+    class Meta:
+        verbose_name = "scheduled"
+
+    times = models.TextField()
+    
+

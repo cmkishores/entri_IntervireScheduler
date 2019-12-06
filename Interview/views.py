@@ -40,19 +40,40 @@ class SchedulerView(LoginRequiredMixin, UserPassesTestMixin, FormView):
 		for objects in InterviewSchedule.objects.all():
 				
 			if objects.owner.username == interviewer:
+		
 					interviewer_start_time = objects.start_time
 					interviewer_end_time = objects.end_time
+
 					print(interviewer_start_time)
 					print(interviewer_end_time)
+			
 			elif objects.owner.username == candidate:
+		
 					candidate_start_time = objects.start_time
 					candidate_end_time = objects.end_time
+			
 					print(candidate_start_time)
 					print(candidate_end_time)	
+			
 			else : 
 					print()
 					print("not found")
 					print()
+		
+		if interviewer_start_time < candidate_start_time or interviewer_start_time == candidate_start_time :
+			start_time = candidate_start_time
+		elif candidate_start_time < interviewer_start_time:
+			start_time = interviewer_start_time
+		
+		if interviewer_end_time < candidate_end_time or interviewer_end_time == candidate_end_time:
+			end_time = interviewer_end_time
+		elif candidate_end_time < interviewer_end_time:
+			end_time = candidate_end_time
+		
+		print(start_time," to ", end_time)
+
+		
+
 		return super().form_valid(form)
 	
 	def test_func(self):
