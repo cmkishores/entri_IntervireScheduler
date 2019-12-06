@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView,DetailView,TemplateView
+from django.views.generic import ListView,DetailView,TemplateView,View
 from django.views.generic.edit import CreateView,DeleteView,UpdateView, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin,PermissionRequiredMixin
 from .forms import ScheduleAddForm,SearchScheduleForm
@@ -30,7 +30,7 @@ class SchedulerView(LoginRequiredMixin, UserPassesTestMixin, FormView):
 	login_url = 'login'
 	template_name = 'search.html'
 	redirect_field_name = 'redirect_to'
-	success_url = reverse_lazy('home')
+	success_url = reverse_lazy('result')
 
 
 	def form_valid(self,form):
@@ -42,15 +42,13 @@ class SchedulerView(LoginRequiredMixin, UserPassesTestMixin, FormView):
 		for objects in InterviewSchedule.objects.all():
 				
 			if objects.owner.username == interviewer:
-				for i in range(objects.start_time.hour,objects.end_time.hour+1):
+				for i in range(objects.start_time.hour,objects.end_time.hour):
 					interviewer_list_of_hours.append(i)
-				print(interviewer_list_of_hours)
 
 			elif objects.owner.username == candidate:
 		
-				for i in range(objects.start_time.hour,objects.end_time.hour+1):
+				for i in range(objects.start_time.hour,objects.end_time.hour):
 					candidate_list_of_hours.append(i)			
-				print(candidate_list_of_hours)
 
 			else : 
 					print()
@@ -58,10 +56,25 @@ class SchedulerView(LoginRequiredMixin, UserPassesTestMixin, FormView):
 					print()
 		
 		
+		print("Possible hours for interviewer is ",set(interviewer_list_of_hours))
+		print("Possible hours for candidate is ",set(candidate_list_of_hours))
 
+		list_times = []
+		#if(set(interviewer_list_of_hours) & set(candidate_list_of_hours)):
+			#list_times.append( (set(interviewer_list_of_hours) & set(candidate_list_of_hours)) )
+		#lists = list(list_times)
+		
+		for item in interviewer_list_of_hours:
+			if item in candidate_list_of_hours:
+				list_times.append((item,item+1))
+		self.request.session['list_items'] = list_times
 		return super().form_valid(form)
 	
 	def test_func(self):
 		return (self.request.user.user_type == 'hr')
+
+class ResultView(LoginRequiredMixin,TemplateView):
+	template_name = 'result.html'
+
 	
 	
